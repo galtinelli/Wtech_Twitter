@@ -1,6 +1,6 @@
 using System;
 
-namespace Twitter.Project.Models
+namespace Twitter.Web.Models
 {
     public class ErrorViewModel
     {
