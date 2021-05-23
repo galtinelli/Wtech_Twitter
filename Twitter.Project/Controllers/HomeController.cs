@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Twitter.Web.Models;
@@ -16,6 +19,16 @@ namespace Twitter.Web.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Login()
+        {
+            var name = User.Claims.Where(c => c.Type == ClaimTypes.Name)
+               .Select(c => c.Value).SingleOrDefault();
+
+
             return View();
         }
 
