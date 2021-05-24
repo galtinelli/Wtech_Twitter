@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Entites\" />
+    <Folder Include="Context\" />
+    <Folder Include="Maps\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
