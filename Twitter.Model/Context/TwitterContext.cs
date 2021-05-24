@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Twitter.Core.Entities;
 using Twitter.Model.Entites;
+using Twitter.Model.Maps;
 
 namespace Twitter.Model.Context
 {
@@ -34,37 +37,6 @@ namespace Twitter.Model.Context
             var modifiedEntities = ChangeTracker.Entries()
                 .Where(x => x.State == EntityState.Modified || x.State == EntityState.Added)
                 .ToList();
-
-            //burada UnitOfWork denilen bir design pattern var,
-            //UnitOfWork, Db commit işlemlerini yönetiyor
-            //bu pattern Generic Repository pattern ile birlikte çalışabilir
-
-            string computerName = Environment.MachineName;
-            string ipAddress = "127.0.0.1";
-            DateTime date = DateTime.Now;
-
-            foreach (var item in modifiedEntities)
-            {
-                CoreEntity entity = item.Entity as CoreEntity;
-                if (item != null)
-                {
-                    switch (item.State)
-                    {
-                        case EntityState.Added:
-                            entity.CreatedComputerName = computerName;
-                            entity.CreatedIP = ipAddress;
-                            entity.CreatedDate = date;
-                            break;
-
-                        case EntityState.Modified:
-                            entity.ModifiedComputerName = computerName;
-                            entity.ModifiedIP = ipAddress;
-                            entity.ModifiedDate = date;
-                            break;
-                    }
-                }
-
-            }
             return base.SaveChanges();
         }
     }
