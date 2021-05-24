@@ -1,6 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Login Sayfası";
-}
-<h1>@ViewData["Title"]</h1>
+﻿
+@model LoginModel;
 
-<p>Use this page to detail your site's privacy policy.</p>
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<h2>Login</h2>
+
+<div style="padding-left:20px">
+
+    @if (!string.IsNullOrEmpty(Model.ErrorText))
+    {
+        @*Style on Razor html element : https://stackoverflow.com/questions/6887072/how-can-i-apply-styling-to-asp-net-mvc-html-textboxfor*@
+        @Html.LabelFor(x => x.ErrorText, Model.ErrorText, new { Style = "color:#FF0000;" })
+    }
+
+    @using (Html.BeginForm("TryLog", "Authenticator", FormMethod.Post))
+    {
+
+        @Html.LabelFor(x => x.Email)
+        <br />
+        @Html.TextBoxFor(x => x.Email, Model.Email)
+        <br />
+        @Html.LabelFor(x => x.Password)
+        <br />
+        @Html.PasswordFor(x => x.Password, Model.Password)
+
+        <button class="btn-info" type="submit">Continue</button>
+    }
+</div>

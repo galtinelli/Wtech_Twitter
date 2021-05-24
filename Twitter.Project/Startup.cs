@@ -46,18 +46,18 @@ namespace Twitter.Project
 
             app.UseAuthorization();
 
-        //services.AddMvc();
-        //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        //        .AddCookie(options =>
-        //        {
-        //            options.LoginPath = "/Account/Login/";
-        //        });
-        //app.UseMvc(routes =>
-        //{
-        //    routes.MapRoute(
-        //        name: "default",
-        //        template: "{controller=Home}/{action=Index}/{id?}");
-        //});
+            //services.AddMvc();
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //        .AddCookie(options =>
+            //        {
+            //            options.LoginPath = "/Account/Login/";
+            //        });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
 
             app.UseEndpoints(endpoints =>
             {
